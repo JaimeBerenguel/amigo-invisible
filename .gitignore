@@ -1,2 +1,2 @@
-# We don't want the .git tracking the next folder...
+# We don't want the .git tracking the next folder because it's the whole curl library
 /curl/

@@ -1,8 +1,8 @@
 #include "Participante.h"
+#include "Email.h"
 #include <algorithm>
 #include <time.h>
 #include <curl/curl.h>
-#include "Email.h"
 using namespace std;
 
 Participante::Participante(string nombre, string email,vector<Participante> enemigos){
@@ -99,7 +99,7 @@ Participante::sendEmail(Participante p){
     curl_easy_setopt(handler, CURLOPT_URL, "smtp://smtp.gmail.com:587");
     curl_easy_setopt(handler, CURLOPT_USE_SSL, CURLUSESSL_ALL);
     curl_easy_setopt(handler, CURLOPT_USERNAME, FROM);
-    curl_easy_setopt(handler, CURLOPT_PASSWORD, "lomolo99");
+    curl_easy_setopt(handler, CURLOPT_PASSWORD, "D4J5D9S0CO5A4S3F9D6K0");
 
     // Le pasamos el correo al que se lo vamos a enviar
     recipients = curl_slist_append(recipients, getEmail().c_str());
@@ -119,11 +119,12 @@ Participante::sendEmail(Participante p){
     if(res != CURLE_OK)
       fprintf(stderr, "curl_easy_perform() failed: %s\n",
               curl_easy_strerror(res));
+    else
+      cout << "Mensaje enviado con exito" << endl;
+    
 
     curl_slist_free_all(recipients);
 
     curl_easy_cleanup(handler);
   }
-
-  cout << "Mensaje enviado con exito" << endl;
 }
