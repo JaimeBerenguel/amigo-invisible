@@ -21,12 +21,15 @@ class Participante{
 		string getEmail() const{ return email; }
 		void setEmail(string email){ this->email = email; }
 		
+		Participante getEnemigo(int indice) const{ return (indice < enemigos.size() && indice >= 0) ? enemigos[indice]:(*this); }
 		vector<Participante> getEnemigos() const{ return enemigos; }
 		void setEnemigos(vector<Participante> enemigos);
+		bool findParticipante(const vector<Participante> &) const;
 
 		int getIdAmigoInvisible() const{ return idAmigoInvisible;}
 		void setIdAmigoInvisible(int idAmigoInvisible){ this->idAmigoInvisible = idAmigoInvisible; }
 		
+		string getActualDate();
 		void sendEmail(Participante p);
 		
 		Participante& operator=(const Participante &);
